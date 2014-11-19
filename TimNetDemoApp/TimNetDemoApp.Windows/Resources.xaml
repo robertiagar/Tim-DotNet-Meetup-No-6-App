@@ -1,0 +1,24 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TimNetDemoApp.Assets">
+    <Style x:Key="Visible" TargetType="ProgressBar">
+        <Setter Property="Visibility">
+            <Setter.Value>
+                <Binding Path="IsBusy" Converter="{StaticResource BoolToVisibilityConverter}"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <DataTemplate x:Key="PhotoTemplate">
+        <Border Background="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}" Height="300">
+            <Grid>
+                <Image Source="{Binding Url}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}"/>
+                <StackPanel VerticalAlignment="Bottom" Background="Black" Opacity=".75">
+                    <TextBlock Style="{ThemeResource TitleTextBlockStyle}">
+                        <Run Text="{Binding Title}"/> - <Run Text="{Binding Username}" FontWeight="Bold"/>
+                    </TextBlock>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </DataTemplate>
+</ResourceDictionary>
